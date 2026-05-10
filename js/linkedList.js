@@ -23,7 +23,6 @@ export function linkedList() {
         return linkedList;
       }
       linkedList = node(value, linkedList);
-      console.log(linkedList);
       return linkedList;
     },
   };
