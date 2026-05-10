@@ -1,15 +1,13 @@
 export function linkedList() {
   const linkedList = node();
+  let tail = linkedList;
   return {
     append: (value) => {
-      let current = linkedList;
-      while (current.nextNode !== null) {
-        current = current.nextNode;
-      }
-      if (!current.value && !current.nextNode) {
-        linkedList.value = value;
-      } else if (current.value && !current.nextNode) {
-        current.nextNode = node(value);
+      if (!tail.value && !tail.nextNode) {
+        tail.value = value;
+      } else if (tail.value && !tail.nextNode) {
+        tail.nextNode = node(value);
+        tail = tail.nextNode;
       }
 
       return linkedList;
