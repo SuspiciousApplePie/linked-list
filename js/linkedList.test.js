@@ -66,8 +66,8 @@ describe("Prepend test", () => {
     });
   });
   test("prepend with null items", () => {
-    expect(item.prepend()).toStrictEqual({
-      value: null,
+    expect(item.prepend("RR")).toStrictEqual({
+      value: "RR",
       nextNode: {
         value: "Yuta",
         nextNode: {

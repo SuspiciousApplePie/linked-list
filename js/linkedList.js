@@ -1,12 +1,10 @@
 export function linkedList() {
   let linkedList = null;
-  let head = null;
   let tail = null;
   return {
     append: (value) => {
       if (!linkedList) {
         linkedList = node(value);
-        head = linkedList;
         tail = linkedList;
         return linkedList;
       }
@@ -18,7 +16,6 @@ export function linkedList() {
     prepend: (value) => {
       if (!linkedList) {
         linkedList = node(value);
-        head = linkedList;
         tail = linkedList;
         return linkedList;
       }
