@@ -33,6 +33,9 @@ export function linkedList() {
     head: () => {
       return linkedList ? linkedList.value : undefined;
     },
+    tail: () => {
+      return tail ? tail.value : undefined;
+    },
   };
 }
 export function node(value = null, nextNode = null) {

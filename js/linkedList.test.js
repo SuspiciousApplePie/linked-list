@@ -130,3 +130,24 @@ describe("head test", () => {
     expect(item.head()).toBe(undefined);
   });
 });
+
+describe("tail test", () => {
+  test("return non null", () => {
+    const item = linkedList();
+    item.append("Koko");
+    item.append("Koloko");
+    item.append("Kokoloko");
+    expect(item.tail()).toBe("Kokoloko");
+  });
+  test("return non null prepend", () => {
+    const item = linkedList();
+    item.prepend("Koko");
+    item.prepend("Koloko");
+    item.prepend("Kokoloko");
+    expect(item.tail()).toBe("Koko");
+  });
+  test("return undefined", () => {
+    const item = linkedList();
+    expect(item.tail()).toBe(undefined);
+  });
+});
