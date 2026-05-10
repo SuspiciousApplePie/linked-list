@@ -47,3 +47,34 @@ describe("Append test", () => {
     });
   });
 });
+
+describe("Prepend test", () => {
+  const item = linkedList();
+  test("prepend with zero items", () => {
+    expect(item.prepend("Yuki")).toStrictEqual({
+      value: "Yuki",
+      nextNode: null,
+    });
+  });
+  test("prepend with one items", () => {
+    expect(item.prepend("Yuta")).toStrictEqual({
+      value: "Yuta",
+      nextNode: {
+        value: "Yuki",
+        nextNode: null,
+      },
+    });
+  });
+  test("prepend with null items", () => {
+    expect(item.prepend()).toStrictEqual({
+      value: null,
+      nextNode: {
+        value: "Yuta",
+        nextNode: {
+          value: "Yuki",
+          nextNode: null,
+        },
+      },
+    });
+  });
+});
