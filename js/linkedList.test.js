@@ -113,3 +113,20 @@ describe("size test", () => {
     expect(item.size()).toBe(3);
   });
 });
+
+describe("head test", () => {
+  test("return non null from append", () => {
+    const item = linkedList();
+    item.append("Bron");
+    expect(item.head()).toBe("Bron");
+  });
+  test("return non null from prepend", () => {
+    const item = linkedList();
+    item.prepend("Bron");
+    expect(item.head()).toBe("Bron");
+  });
+  test("return no value", () => {
+    const item = linkedList();
+    expect(item.head()).toBe(undefined);
+  });
+});
