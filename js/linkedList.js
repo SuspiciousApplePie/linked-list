@@ -1,17 +1,19 @@
 export function linkedList() {
-  const linkedList = node();
-  let tail = linkedList;
+  let linkedList = null;
+  let tail = null;
   return {
     append: (value) => {
-      if (!tail.value && !tail.nextNode) {
-        tail.value = value;
-      } else if (tail.value && !tail.nextNode) {
-        tail.nextNode = node(value);
-        tail = tail.nextNode;
+      if (!linkedList) {
+        linkedList = node(value);
+        tail = linkedList;
+        return linkedList;
       }
+      tail.nextNode = node(value);
+      tail = tail.nextNode;
 
       return linkedList;
     },
+    prepend: (value) => {},
   };
 }
 export function node(value = null, nextNode = null) {

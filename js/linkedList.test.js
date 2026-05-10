@@ -34,13 +34,13 @@ describe("Append test", () => {
       },
     });
   });
-  test("append with three items", () => {
-    expect(item2.append("Bronny")).toStrictEqual({
+  test("append with null", () => {
+    expect(item2.append()).toStrictEqual({
       value: "Bron",
       nextNode: {
         value: "John",
         nextNode: {
-          value: "Bronny",
+          value: null,
           nextNode: null,
         },
       },
