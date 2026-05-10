@@ -78,3 +78,38 @@ describe("Prepend test", () => {
     });
   });
 });
+
+describe("size test", () => {
+  test("no nodes", () => {
+    const item = linkedList();
+    expect(item.size()).toBe(0);
+  });
+
+  test("one node appended", () => {
+    const item = linkedList();
+    item.append("Bron");
+    expect(item.size()).toBe(1);
+  });
+
+  test("3 node appended", () => {
+    const item = linkedList();
+    item.append("Bron");
+    item.append("Bron");
+    item.append("Bron");
+    expect(item.size()).toBe(3);
+  });
+
+  test("1 node prepended", () => {
+    const item = linkedList();
+    item.append("Bron");
+    expect(item.size()).toBe(1);
+  });
+
+  test("3 node prepended", () => {
+    const item = linkedList();
+    item.prepend("Bron");
+    item.prepend("Bron");
+    item.prepend("Bron");
+    expect(item.size()).toBe(3);
+  });
+});
