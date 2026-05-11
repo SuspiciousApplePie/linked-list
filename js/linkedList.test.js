@@ -112,6 +112,12 @@ describe("size test", () => {
     item.prepend("Bron");
     expect(item.size()).toBe(3);
   });
+  test("size after pop", () => {
+    const item = linkedList();
+    item.prepend("Bron");
+    item.pop();
+    expect(item.size()).toBe(0);
+  });
 });
 
 describe("head test", () => {
@@ -127,6 +133,12 @@ describe("head test", () => {
   });
   test("return no value", () => {
     const item = linkedList();
+    expect(item.head()).toBe(undefined);
+  });
+  test("head after pop", () => {
+    const item = linkedList();
+    item.prepend("Bron");
+    item.pop();
     expect(item.head()).toBe(undefined);
   });
 });
@@ -148,6 +160,12 @@ describe("tail test", () => {
   });
   test("return undefined", () => {
     const item = linkedList();
+    expect(item.tail()).toBe(undefined);
+  });
+  test("tail after pop", () => {
+    const item = linkedList();
+    item.prepend("Bron");
+    item.pop();
     expect(item.tail()).toBe(undefined);
   });
 });
@@ -181,18 +199,41 @@ describe("at test", () => {
     item.append("Lon");
     expect(item.at(3)).toBe(undefined);
   });
-  test("test at higher range than size", () => {
-    const item = linkedList();
-    item.append("Koko");
-    item.append("Bron");
-    item.append("Lon");
-    expect(item.at(-1)).toBe(undefined);
-  });
   test("test at lower range than 0", () => {
     const item = linkedList();
     item.append("Koko");
     item.append("Bron");
     item.append("Lon");
     expect(item.at(-1)).toBe(undefined);
+  });
+});
+
+describe("pop test", () => {
+  test("delete in one item", () => {
+    const item = linkedList();
+    item.append("Koko");
+    expect(item.pop()).toStrictEqual(null);
+  });
+  test("delete in two item", () => {
+    const item = linkedList();
+    item.append("Koko");
+    item.append("Joe");
+    expect(item.pop()).toStrictEqual({
+      value: "Koko",
+      nextNode: null,
+    });
+  });
+  test("delete in two item", () => {
+    const item = linkedList();
+    item.append("Koko");
+    item.append("Joe");
+    item.append("Mart");
+    expect(item.pop()).toStrictEqual({
+      value: "Koko",
+      nextNode: {
+        value: "Joe",
+        nextNode: null,
+      },
+    });
   });
 });

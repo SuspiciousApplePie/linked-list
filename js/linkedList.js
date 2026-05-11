@@ -44,6 +44,24 @@ export function linkedList() {
       }
       return cur.value;
     },
+    pop: () => {
+      if (size === 1) {
+        linkedList = null;
+        tail = null;
+        size--;
+        return linkedList;
+      }
+      let prev = null;
+      let cur = linkedList;
+      while (cur.nextNode) {
+        prev = cur;
+        cur = cur.nextNode;
+      }
+      tail = prev;
+      tail.nextNode = null;
+      size--;
+      return linkedList;
+    },
   };
 }
 export function node(value = null, nextNode = null) {
