@@ -66,7 +66,6 @@ export function linkedList() {
       let isExist = false;
       let cur = linkedList;
       while (cur) {
-        console.log(`${cur.value} = ${value}`);
         if (cur.value === value) {
           isExist = true;
           break;
@@ -75,6 +74,18 @@ export function linkedList() {
       }
 
       return isExist;
+    },
+    findIndex: (value) => {
+      let cur = linkedList;
+      let index = -1;
+      for (let pos = 0; pos < size; pos++) {
+        if (value === cur.value) {
+          index = pos;
+          break;
+        }
+        cur = cur.nextNode;
+      }
+      return index;
     },
   };
 }

@@ -267,3 +267,36 @@ describe("contains check", () => {
     expect(item.contains("Clorinde")).toBeFalsy();
   });
 });
+
+describe("findIndex test", () => {
+  test("check first item in one node list", () => {
+    const item = linkedList();
+    item.append("Lumine");
+    expect(item.findIndex("Lumine")).toBe(0);
+  });
+  test("check index in middle of list", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    item.append("Lumine");
+    item.append("Amber");
+    expect(item.findIndex("Lumine")).toBe(2);
+  });
+  test("check index of  non existing value in middle of list", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    item.append("Lumine");
+    item.append("Amber");
+    expect(item.findIndex("Clorinde")).toBe(-1);
+  });
+  test("check index with duplicate", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    item.append("Lumine");
+    item.append("Amber");
+    item.append("Aether");
+    expect(item.findIndex("Aether")).toBe(1);
+  });
+});
