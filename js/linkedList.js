@@ -87,6 +87,17 @@ export function linkedList() {
       }
       return index;
     },
+    toString: () => {
+      let nodeString = [];
+      let cur = linkedList;
+      console.log(linkedList);
+      while (cur) {
+        nodeString.push(`( ${cur.value} )`);
+        cur = cur.nextNode;
+      }
+      nodeString.push("null");
+      return nodeString.join(" -> ");
+    },
   };
 }
 export function node(value = null, nextNode = null) {

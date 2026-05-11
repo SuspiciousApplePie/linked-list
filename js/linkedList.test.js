@@ -300,3 +300,20 @@ describe("findIndex test", () => {
     expect(item.findIndex("Aether")).toBe(1);
   });
 });
+
+describe("toString test", () => {
+  test("convert 1 node to string", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    expect(item.toString()).toBe("( Paimon ) -> null");
+  });
+  test("convert 1 node to string", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    item.append("Lumine");
+    expect(item.toString()).toBe(
+      "( Paimon ) -> ( Aether ) -> ( Lumine ) -> null",
+    );
+  });
+});
