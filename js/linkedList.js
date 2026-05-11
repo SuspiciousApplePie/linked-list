@@ -62,6 +62,20 @@ export function linkedList() {
       size--;
       return linkedList;
     },
+    contains: (value) => {
+      let isExist = false;
+      let cur = linkedList;
+      while (cur) {
+        console.log(`${cur.value} = ${value}`);
+        if (cur.value === value) {
+          isExist = true;
+          break;
+        }
+        cur = cur.nextNode;
+      }
+
+      return isExist;
+    },
   };
 }
 export function node(value = null, nextNode = null) {

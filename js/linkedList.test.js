@@ -237,3 +237,33 @@ describe("pop test", () => {
     });
   });
 });
+
+describe("contains check", () => {
+  test("check if it contains the value", () => {
+    const item = linkedList();
+    item.append("Koko");
+    expect(item.contains("Koko")).toBeTruthy();
+  });
+  test("check if it contains the value in two nodes", () => {
+    const item = linkedList();
+    item.append("Koko");
+    item.append("Bron");
+    expect(item.contains("Bron")).toBeTruthy();
+  });
+  test("check if it contains the value in 4 nodes", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    item.append("Lumine");
+    item.append("Amber");
+    expect(item.contains("Lumine")).toBeTruthy();
+  });
+  test("check if false works", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    item.append("Lumine");
+    item.append("Amber");
+    expect(item.contains("Clorinde")).toBeFalsy();
+  });
+});
