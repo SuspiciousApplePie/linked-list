@@ -151,3 +151,48 @@ describe("tail test", () => {
     expect(item.tail()).toBe(undefined);
   });
 });
+
+describe("at test", () => {
+  test("test at 0 position", () => {
+    const item = linkedList();
+    item.append("Koko");
+    expect(item.at(0)).toBe("Koko");
+  });
+  test("test at 1 position", () => {
+    const item = linkedList();
+    item.append("Koko");
+    item.append("Bron");
+    expect(item.at(1)).toBe("Bron");
+  });
+  test("test at 3 position", () => {
+    const item = linkedList();
+    item.append("Koko");
+    item.append("Bron");
+    item.append("Lon");
+    item.append("Toronto");
+    item.append("Paquito");
+    item.append("Loba");
+    expect(item.at(3)).toBe("Toronto");
+  });
+  test("test at higher range than size", () => {
+    const item = linkedList();
+    item.append("Koko");
+    item.append("Bron");
+    item.append("Lon");
+    expect(item.at(3)).toBe(undefined);
+  });
+  test("test at higher range than size", () => {
+    const item = linkedList();
+    item.append("Koko");
+    item.append("Bron");
+    item.append("Lon");
+    expect(item.at(-1)).toBe(undefined);
+  });
+  test("test at lower range than 0", () => {
+    const item = linkedList();
+    item.append("Koko");
+    item.append("Bron");
+    item.append("Lon");
+    expect(item.at(-1)).toBe(undefined);
+  });
+});

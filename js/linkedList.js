@@ -36,6 +36,14 @@ export function linkedList() {
     tail: () => {
       return tail ? tail.value : undefined;
     },
+    at: (index) => {
+      let cur = linkedList;
+      if (index >= size || index < 0) return;
+      for (let pos = 0; pos < index; pos++) {
+        cur = cur.nextNode;
+      }
+      return cur.value;
+    },
   };
 }
 export function node(value = null, nextNode = null) {
