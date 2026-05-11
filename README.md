@@ -4,8 +4,17 @@ A linked list exercise in JavaScript
 
 ## Tools Used:
 
-- Jest (For testing with babel for es6 compatibility).
+- Jest (For testing with babel for ES6 compatibility).
 
-## Features:
+## Methods:
 
 - Append
+- Prepend
+- Size
+- Head
+- Tail
+- At
+- Pop
+- Contains
+- Find Index
+- To String
