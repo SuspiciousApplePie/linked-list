@@ -8,22 +8,20 @@ export function linkedList() {
       if (!linkedList) {
         linkedList = node(value);
         tail = linkedList;
-        size += 1;
       } else {
         tail.nextNode = node(value);
         tail = tail.nextNode;
-        size += 1;
       }
+      size++;
     },
     prepend: (value) => {
       if (!linkedList) {
         linkedList = node(value);
         tail = linkedList;
-        size += 1;
       } else {
         linkedList = node(value, linkedList);
-        size += 1;
       }
+      size++;
     },
     size: () => {
       return size;
@@ -46,17 +44,16 @@ export function linkedList() {
       if (size === 1) {
         linkedList = null;
         tail = null;
-        size--;
-        return linkedList;
+      } else {
+        let prev = null;
+        let cur = linkedList;
+        while (cur.nextNode) {
+          prev = cur;
+          cur = cur.nextNode;
+        }
+        tail = prev;
+        tail.nextNode = null;
       }
-      let prev = null;
-      let cur = linkedList;
-      while (cur.nextNode) {
-        prev = cur;
-        cur = cur.nextNode;
-      }
-      tail = prev;
-      tail.nextNode = null;
       size--;
     },
     contains: (value) => {
