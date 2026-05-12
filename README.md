@@ -8,13 +8,21 @@ A linked list exercise in JavaScript
 
 ## Methods:
 
-- Append
-- Prepend
-- Size
-- Head
-- Tail
-- At
-- Pop
-- Contains
-- Find Index
-- To String
+- append
+- prepend
+- size
+- head
+- tail
+- at
+- pop
+- contains
+- findIndex
+- toString
+- insertAt
+- removeAt
+
+## Things I learned
+
+- How to create linked list
+- Common operations in linkedl list
+- Implement some Big O I learned
