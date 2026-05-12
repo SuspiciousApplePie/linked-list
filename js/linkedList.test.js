@@ -317,3 +317,136 @@ describe("toString test", () => {
     );
   });
 });
+
+describe("insertAt test", () => {
+  test("insert 1 item in middle of list", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    expect(item.insertAt(1, "Lumine")).toStrictEqual({
+      value: "Paimon",
+      nextNode: {
+        value: "Lumine",
+        nextNode: {
+          value: "Aether",
+          nextNode: null,
+        },
+      },
+    });
+  });
+
+  test("insert 2 item in middle of list", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    expect(item.insertAt(1, "Lumine", "Amber")).toStrictEqual({
+      value: "Paimon",
+      nextNode: {
+        value: "Lumine",
+        nextNode: {
+          value: "Amber",
+          nextNode: {
+            value: "Aether",
+            nextNode: null,
+          },
+        },
+      },
+    });
+  });
+
+  test("insert 4 item in middle of list", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    expect(
+      item.insertAt(1, "Lumine", "Amber", "Clorinde", "SKirk"),
+    ).toStrictEqual({
+      value: "Paimon",
+      nextNode: {
+        value: "Lumine",
+        nextNode: {
+          value: "Amber",
+          nextNode: {
+            value: "Clorinde",
+            nextNode: {
+              value: "SKirk",
+              nextNode: {
+                value: "Aether",
+                nextNode: null,
+              },
+            },
+          },
+        },
+      },
+    });
+  });
+
+  test("insert 1 item in start of list", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    expect(item.insertAt(0, "Lumine")).toStrictEqual({
+      value: "Lumine",
+      nextNode: {
+        value: "Paimon",
+        nextNode: {
+          value: "Aether",
+          nextNode: null,
+        },
+      },
+    });
+  });
+
+  test("insert 2 item in start of list", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    expect(item.insertAt(0, "Lumine", "Amber")).toStrictEqual({
+      value: "Lumine",
+      nextNode: {
+        value: "Amber",
+        nextNode: {
+          value: "Paimon",
+          nextNode: {
+            value: "Aether",
+            nextNode: null,
+          },
+        },
+      },
+    });
+  });
+
+  test("insert 2 item in end of list", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    expect(item.insertAt(2, "Lumine", "Amber")).toStrictEqual({
+      value: "Paimon",
+      nextNode: {
+        value: "Aether",
+        nextNode: {
+          value: "Lumine",
+          nextNode: {
+            value: "Amber",
+            nextNode: null,
+          },
+        },
+      },
+    });
+  });
+
+  test("Range error more than max index", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    expect(() => item.insertAt(2, "Lumine")).toThrow(
+      `Index must be in range 0-1`,
+    );
+  });
+  test("Range error less than max index", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    expect(() => item.insertAt(-1, "Lumine")).toThrow(
+      `Index must be in range 0-1`,
+    );
+  });
+});

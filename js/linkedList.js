@@ -90,13 +90,36 @@ export function linkedList() {
     toString: () => {
       let nodeString = [];
       let cur = linkedList;
-      console.log(linkedList);
       while (cur) {
         nodeString.push(`( ${cur.value} )`);
         cur = cur.nextNode;
       }
       nodeString.push("null");
       return nodeString.join(" -> ");
+    },
+    insertAt: (index, ...values) => {
+      if (index < 0 || index > size)
+        throw new RangeError(`Index must be in range 0-${size}`);
+      let next = linkedList;
+      let prev;
+      for (let pos = 0; pos < index; pos++) {
+        prev = next;
+        next = next.nextNode;
+      }
+
+      values.forEach((value) => {
+        const newNode = node(value);
+        if (prev) {
+          prev.nextNode = newNode;
+          newNode.nextNode = next;
+          prev = newNode;
+        } else {
+          prev = newNode;
+          newNode.nextNode = next;
+          linkedList = prev;
+        }
+      });
+      return linkedList;
     },
   };
 }
