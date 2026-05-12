@@ -1,9 +1,11 @@
 import { linkedList } from "./linkedList.js";
 
-const newLinkedList = linkedList();
+const genshinCharacters = linkedList();
 
-newLinkedList.append("Bron");
-newLinkedList.append("Bron");
-newLinkedList.append("Bron");
-newLinkedList.append("Bron");
-console.log(newLinkedList.append("Kobe"));
+genshinCharacters.append("Paimon");
+genshinCharacters.append("Aether");
+genshinCharacters.append("Lumine");
+genshinCharacters.append("Amber");
+genshinCharacters.append("Venti");
+
+console.log(genshinCharacters.toString());
