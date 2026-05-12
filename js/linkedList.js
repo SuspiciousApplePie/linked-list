@@ -121,6 +121,26 @@ export function linkedList() {
       });
       return linkedList;
     },
+    removeAt: (index) => {
+      let prev;
+      let cur = linkedList;
+      let next = cur.nextNode;
+      if (index < 0 || index >= size)
+        throw new RangeError(`Index must be in range 0-${size - 1}`);
+      for (let pos = 0; pos < index; pos++) {
+        prev = cur;
+        cur = cur.nextNode;
+        next = cur.nextNode;
+      }
+
+      if (!prev) {
+        linkedList = cur.nextNode;
+      } else {
+        prev.nextNode = next;
+      }
+
+      return linkedList;
+    },
   };
 }
 export function node(value = null, nextNode = null) {

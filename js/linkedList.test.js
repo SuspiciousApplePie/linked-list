@@ -450,3 +450,98 @@ describe("insertAt test", () => {
     );
   });
 });
+
+describe("removeAt test", () => {
+  test("remove from middle", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    item.append("Lumine");
+    expect(item.removeAt(1)).toStrictEqual({
+      value: "Paimon",
+      nextNode: {
+        value: "Lumine",
+        nextNode: null,
+      },
+    });
+  });
+
+  test("remove from 3rd item", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    item.append("Lumine");
+    item.append("Amber");
+    expect(item.removeAt(2)).toStrictEqual({
+      value: "Paimon",
+      nextNode: {
+        value: "Aether",
+        nextNode: {
+          value: "Amber",
+          nextNode: null,
+        },
+      },
+    });
+  });
+
+  test("remove from 1st item", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    item.append("Lumine");
+    item.append("Amber");
+    expect(item.removeAt(0)).toStrictEqual({
+      value: "Aether",
+      nextNode: {
+        value: "Lumine",
+        nextNode: {
+          value: "Amber",
+          nextNode: null,
+        },
+      },
+    });
+  });
+
+  test("remove last item", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    item.append("Lumine");
+    item.append("Amber");
+    expect(item.removeAt(3)).toStrictEqual({
+      value: "Paimon",
+      nextNode: {
+        value: "Aether",
+        nextNode: {
+          value: "Lumine",
+          nextNode: null,
+        },
+      },
+    });
+  });
+
+  test("Range error more than max index", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    expect(() => item.removeAt(-1, "Lumine")).toThrow(
+      `Index must be in range 0-0`,
+    );
+  });
+
+  test("Range error more than max index", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    expect(() => item.removeAt(1, "Lumine")).toThrow(
+      `Index must be in range 0-0`,
+    );
+  });
+
+  test("Range error more than max index", () => {
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    expect(() => item.removeAt(2, "Lumine")).toThrow(
+      `Index must be in range 0-1`,
+    );
+  });
+});
