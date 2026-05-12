@@ -119,6 +119,7 @@ export function linkedList() {
           linkedList = prev;
         }
       });
+      size += values.length;
       return linkedList;
     },
     removeAt: (index) => {
@@ -138,7 +139,7 @@ export function linkedList() {
       } else {
         prev.nextNode = next;
       }
-
+      size--;
       return linkedList;
     },
   };
