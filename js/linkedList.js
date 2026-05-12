@@ -99,7 +99,7 @@ export function linkedList() {
     },
     insertAt: (index, ...values) => {
       if (index < 0 || index > size)
-        throw new RangeError(`Index must be in range 0-${size}`);
+        throw new RangeError(`Index must be in range 0-${size - 1}`);
       let next = linkedList;
       let prev;
       for (let pos = 0; pos < index; pos++) {

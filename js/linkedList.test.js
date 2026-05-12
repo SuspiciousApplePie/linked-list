@@ -439,14 +439,14 @@ describe("insertAt test", () => {
     const item = linkedList();
     item.append("Paimon");
     expect(() => item.insertAt(2, "Lumine")).toThrow(
-      `Index must be in range 0-1`,
+      `Index must be in range 0-0`,
     );
   });
   test("Range error less than max index", () => {
     const item = linkedList();
     item.append("Paimon");
     expect(() => item.insertAt(-1, "Lumine")).toThrow(
-      `Index must be in range 0-1`,
+      `Index must be in range 0-0`,
     );
   });
 });
