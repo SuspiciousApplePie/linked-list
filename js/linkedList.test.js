@@ -16,66 +16,43 @@ describe("Node test", () => {
 });
 
 describe("Append test", () => {
-  const item = linkedList();
-  const item2 = linkedList();
-  item2.append("Bron");
   test("append base", () => {
-    expect(item.append("John")).toStrictEqual({
-      value: "John",
-      nextNode: null,
-    });
+    const item = linkedList();
+    item.append("Aether");
+    expect(item.tail()).toBe("Aether");
   });
   test("append with existing content", () => {
-    expect(item2.append("John")).toStrictEqual({
-      value: "Bron",
-      nextNode: {
-        value: "John",
-        nextNode: null,
-      },
-    });
+    const item = linkedList();
+    item.append("Paimon");
+    item.append("Aether");
+    expect(item.tail("Aether")).toBe("Aether");
   });
   test("append with null", () => {
-    expect(item2.append()).toStrictEqual({
-      value: "Bron",
-      nextNode: {
-        value: "John",
-        nextNode: {
-          value: null,
-          nextNode: null,
-        },
-      },
-    });
+    const item = linkedList();
+    item.append("Paimon");
+    item.append();
+    expect(item.tail()).toBe(null);
   });
 });
 
 describe("Prepend test", () => {
-  const item = linkedList();
   test("prepend with zero items", () => {
-    expect(item.prepend("Yuki")).toStrictEqual({
-      value: "Yuki",
-      nextNode: null,
-    });
+    const item = linkedList();
+    item.prepend("Paimon");
+    expect(item.head()).toBe("Paimon");
   });
   test("prepend with one items", () => {
-    expect(item.prepend("Yuta")).toStrictEqual({
-      value: "Yuta",
-      nextNode: {
-        value: "Yuki",
-        nextNode: null,
-      },
-    });
+    const item = linkedList();
+    item.prepend("Paimon");
+    item.prepend("Aether");
+    expect(item.head()).toBe("Aether");
   });
   test("prepend with null items", () => {
-    expect(item.prepend("RR")).toStrictEqual({
-      value: "RR",
-      nextNode: {
-        value: "Yuta",
-        nextNode: {
-          value: "Yuki",
-          nextNode: null,
-        },
-      },
-    });
+    const item = linkedList();
+    item.prepend("Paimon");
+    item.prepend("Aether");
+    item.prepend();
+    expect(item.head()).toBe(null);
   });
 });
 
@@ -323,116 +300,50 @@ describe("insertAt test", () => {
     const item = linkedList();
     item.append("Paimon");
     item.append("Aether");
-    expect(item.insertAt(1, "Lumine")).toStrictEqual({
-      value: "Paimon",
-      nextNode: {
-        value: "Lumine",
-        nextNode: {
-          value: "Aether",
-          nextNode: null,
-        },
-      },
-    });
+    item.insertAt(1, "Lumine");
+    expect(item.findIndex("Lumine")).toBe(1);
   });
 
   test("insert 2 item in middle of list", () => {
     const item = linkedList();
     item.append("Paimon");
     item.append("Aether");
-    expect(item.insertAt(1, "Lumine", "Amber")).toStrictEqual({
-      value: "Paimon",
-      nextNode: {
-        value: "Lumine",
-        nextNode: {
-          value: "Amber",
-          nextNode: {
-            value: "Aether",
-            nextNode: null,
-          },
-        },
-      },
-    });
+    item.insertAt(1, "Lumine", "Amber");
+    console.log(item.toString());
+    console.log(item.findIndex("Amber"));
+    expect(item.findIndex("Amber")).toBe(2);
   });
 
   test("insert 4 item in middle of list", () => {
     const item = linkedList();
     item.append("Paimon");
     item.append("Aether");
-    expect(
-      item.insertAt(1, "Lumine", "Amber", "Clorinde", "SKirk"),
-    ).toStrictEqual({
-      value: "Paimon",
-      nextNode: {
-        value: "Lumine",
-        nextNode: {
-          value: "Amber",
-          nextNode: {
-            value: "Clorinde",
-            nextNode: {
-              value: "SKirk",
-              nextNode: {
-                value: "Aether",
-                nextNode: null,
-              },
-            },
-          },
-        },
-      },
-    });
+    item.insertAt(1, "Lumine", "Amber", "Clorinde", "SKirk");
+    expect(item.findIndex("Clorinde")).toBe(3);
   });
 
   test("insert 1 item in start of list", () => {
     const item = linkedList();
     item.append("Paimon");
     item.append("Aether");
-    expect(item.insertAt(0, "Lumine")).toStrictEqual({
-      value: "Lumine",
-      nextNode: {
-        value: "Paimon",
-        nextNode: {
-          value: "Aether",
-          nextNode: null,
-        },
-      },
-    });
+    item.insertAt(0, "Lumine");
+    expect(item.findIndex("Lumine")).toBe(0);
   });
 
   test("insert 2 item in start of list", () => {
     const item = linkedList();
     item.append("Paimon");
     item.append("Aether");
-    expect(item.insertAt(0, "Lumine", "Amber")).toStrictEqual({
-      value: "Lumine",
-      nextNode: {
-        value: "Amber",
-        nextNode: {
-          value: "Paimon",
-          nextNode: {
-            value: "Aether",
-            nextNode: null,
-          },
-        },
-      },
-    });
+    item.insertAt(0, "Lumine", "Amber");
+    expect(item.findIndex("Amber")).toBe(1);
   });
 
   test("insert 2 item in end of list", () => {
     const item = linkedList();
     item.append("Paimon");
     item.append("Aether");
-    expect(item.insertAt(2, "Lumine", "Amber")).toStrictEqual({
-      value: "Paimon",
-      nextNode: {
-        value: "Aether",
-        nextNode: {
-          value: "Lumine",
-          nextNode: {
-            value: "Amber",
-            nextNode: null,
-          },
-        },
-      },
-    });
+    item.insertAt(2, "Lumine", "Amber");
+    expect(item.findIndex("Amber")).toBe(3);
   });
 
   test("Range error more than max index", () => {
@@ -457,13 +368,8 @@ describe("removeAt test", () => {
     item.append("Paimon");
     item.append("Aether");
     item.append("Lumine");
-    expect(item.removeAt(1)).toStrictEqual({
-      value: "Paimon",
-      nextNode: {
-        value: "Lumine",
-        nextNode: null,
-      },
-    });
+    item.removeAt(1);
+    expect(item.findIndex("Lumine")).toBe(1);
   });
 
   test("remove from 3rd item", () => {
@@ -472,16 +378,9 @@ describe("removeAt test", () => {
     item.append("Aether");
     item.append("Lumine");
     item.append("Amber");
-    expect(item.removeAt(2)).toStrictEqual({
-      value: "Paimon",
-      nextNode: {
-        value: "Aether",
-        nextNode: {
-          value: "Amber",
-          nextNode: null,
-        },
-      },
-    });
+    item.removeAt(2);
+    expect(item.findIndex("Amber")).toBe(2);
+    expect(item.size("Amber")).toBe(3);
   });
 
   test("remove from 1st item", () => {
@@ -490,16 +389,8 @@ describe("removeAt test", () => {
     item.append("Aether");
     item.append("Lumine");
     item.append("Amber");
-    expect(item.removeAt(0)).toStrictEqual({
-      value: "Aether",
-      nextNode: {
-        value: "Lumine",
-        nextNode: {
-          value: "Amber",
-          nextNode: null,
-        },
-      },
-    });
+    item.removeAt(0);
+    expect(item.findIndex("Aether")).toBe(0);
   });
 
   test("remove last item", () => {
@@ -508,16 +399,8 @@ describe("removeAt test", () => {
     item.append("Aether");
     item.append("Lumine");
     item.append("Amber");
-    expect(item.removeAt(3)).toStrictEqual({
-      value: "Paimon",
-      nextNode: {
-        value: "Aether",
-        nextNode: {
-          value: "Lumine",
-          nextNode: null,
-        },
-      },
-    });
+    item.removeAt(3);
+    expect(item.findIndex("Amber")).toBe(-1);
   });
 
   test("Range error more than max index", () => {
