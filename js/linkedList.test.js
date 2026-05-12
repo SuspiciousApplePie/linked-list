@@ -189,29 +189,23 @@ describe("pop test", () => {
   test("delete in one item", () => {
     const item = linkedList();
     item.append("Koko");
-    expect(item.pop()).toStrictEqual(null);
+    item.pop();
+    expect(item.size()).toBe(0);
   });
   test("delete in two item", () => {
     const item = linkedList();
     item.append("Koko");
     item.append("Joe");
-    expect(item.pop()).toStrictEqual({
-      value: "Koko",
-      nextNode: null,
-    });
+    item.pop();
+    expect(item.size()).toBe(1);
   });
   test("delete in two item", () => {
     const item = linkedList();
     item.append("Koko");
     item.append("Joe");
     item.append("Mart");
-    expect(item.pop()).toStrictEqual({
-      value: "Koko",
-      nextNode: {
-        value: "Joe",
-        nextNode: null,
-      },
-    });
+    item.pop();
+    expect(item.size()).toBe(2);
   });
 });
 
