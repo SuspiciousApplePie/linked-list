@@ -9,23 +9,21 @@ export function linkedList() {
         linkedList = node(value);
         tail = linkedList;
         size += 1;
-        return linkedList;
+      } else {
+        tail.nextNode = node(value);
+        tail = tail.nextNode;
+        size += 1;
       }
-      tail.nextNode = node(value);
-      tail = tail.nextNode;
-      size += 1;
-      return linkedList;
     },
     prepend: (value) => {
       if (!linkedList) {
         linkedList = node(value);
         tail = linkedList;
         size += 1;
-        return linkedList;
+      } else {
+        linkedList = node(value, linkedList);
+        size += 1;
       }
-      linkedList = node(value, linkedList);
-      size += 1;
-      return linkedList;
     },
     size: () => {
       return size;
@@ -60,7 +58,6 @@ export function linkedList() {
       tail = prev;
       tail.nextNode = null;
       size--;
-      return linkedList;
     },
     contains: (value) => {
       let isExist = false;
@@ -120,7 +117,6 @@ export function linkedList() {
         }
       });
       size += values.length;
-      return linkedList;
     },
     removeAt: (index) => {
       let prev;
@@ -140,7 +136,6 @@ export function linkedList() {
         prev.nextNode = next;
       }
       size--;
-      return linkedList;
     },
   };
 }
