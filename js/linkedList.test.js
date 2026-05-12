@@ -338,6 +338,7 @@ describe("insertAt test", () => {
     item.append("Aether");
     item.insertAt(2, "Lumine", "Amber");
     expect(item.findIndex("Amber")).toBe(3);
+    expect(item.tail()).toBe("Amber");
   });
 
   test("Range error more than max index", () => {
@@ -395,6 +396,7 @@ describe("removeAt test", () => {
     item.append("Amber");
     item.removeAt(3);
     expect(item.findIndex("Amber")).toBe(-1);
+    expect(item.tail()).toBe("Lumine");
   });
 
   test("Range error more than max index", () => {
